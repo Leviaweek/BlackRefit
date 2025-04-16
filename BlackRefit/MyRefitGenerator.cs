@@ -35,30 +35,35 @@ public class MyRefitGenerator : IIncrementalGenerator
             
             var sourceGenerator = new SourceGeneratorBuilder();
             
-            var registrationModule = sourceGenerator
-                .Append($"namespace {interfaceSyntax.ContainingNamespace.ToDisplayString()};")
-                .Append($"using {interfaceSyntax.ContainingNamespace.ToDisplayString()};")
-                .Append("using System;")
-                .Append("using System.Net.Http;")
-                .Append("using System.Net.Http.Json;")
-                .Append("using System.Text;")
-                .Append("using BlackRefit;")
-                .Append("using System.Threading.Tasks;")
-                .Append("using System.Collections.Generic;")
-                .Append("using System.Runtime.CompilerServices;")
-                .AppendClass($"{className}RegistrationModule", nameof(Object), builder =>
-                {
-                    builder.Append("[ModuleInitializer]");
-                    builder.Append("public static void Init()")
-                        .AppendOpenBracket()
-                        .Append(
-                            $"RestService.RegisterClient<{interfaceName}>((httpClient) => new {className}(httpClient));")
-                        .AppendCloseBracket();
-                })
-                .Build();
+            var registrationModule = CreateRegistrationModule(sourceGenerator, interfaceSyntax, className, interfaceName);
             
             spc.AddSource($"{className}RegistrationModule.g.cs", SourceText.From(registrationModule, Encoding.UTF8));
         });
+    }
+
+    private static string CreateRegistrationModule(SourceGeneratorBuilder sourceGenerator, INamedTypeSymbol interfaceSyntax, string className, string interfaceName)
+    {
+        return sourceGenerator
+            .Append($"namespace {interfaceSyntax.ContainingNamespace.ToDisplayString()};")
+            .Append($"using {interfaceSyntax.ContainingNamespace.ToDisplayString()};")
+            .Append("using System;")
+            .Append("using System.Net.Http;")
+            .Append("using System.Net.Http.Json;")
+            .Append("using System.Text;")
+            .Append("using BlackRefit;")
+            .Append("using System.Threading.Tasks;")
+            .Append("using System.Collections.Generic;")
+            .Append("using System.Runtime.CompilerServices;")
+            .AppendClass($"{className}RegistrationModule", nameof(Object), builder =>
+            {
+                builder.Append("[ModuleInitializer]");
+                builder.Append("public static void Init()")
+                    .AppendOpenBracket()
+                    .Append(
+                        $"RestService.RegisterClient<{interfaceName}>((httpClient) => new {className}(httpClient));")
+                    .AppendCloseBracket();
+            })
+            .Build();
     }
 
     private static INamedTypeSymbol? GetNamedTypeSymbolWithAttribute(GeneratorSyntaxContext context,
