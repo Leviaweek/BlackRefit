@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackRefit", "BlackRefit\BlackRefit.csproj", "{B723A608-107E-41B7-8DBC-8E1EEE38E16F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackRefitTests", "BlackRefitTests\BlackRefitTests.csproj", "{6E5D8574-3BD6-426D-96A2-946495D524A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B723A608-107E-41B7-8DBC-8E1EEE38E16F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B723A608-107E-41B7-8DBC-8E1EEE38E16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B723A608-107E-41B7-8DBC-8E1EEE38E16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B723A608-107E-41B7-8DBC-8E1EEE38E16F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E5D8574-3BD6-426D-96A2-946495D524A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5D8574-3BD6-426D-96A2-946495D524A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5D8574-3BD6-426D-96A2-946495D524A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5D8574-3BD6-426D-96A2-946495D524A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
