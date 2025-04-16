@@ -118,7 +118,8 @@ public class MyRefitGenerator : IIncrementalGenerator
                 var returnType = method.ReturnType.ToDisplayString();
                 var parameters = method.Parameters;
                 var paramList = string.Join(", ", parameters.Select(p => $"{p.Type.ToDisplayString()} {p.Name}"));
-                var isAsync = returnType.StartsWith("Task") || returnType.StartsWith("ValueTask");
+                var isAsync = returnType.StartsWith("System.Threading.Tasks.Task") ||
+                              returnType.StartsWith("VSystem.Threading.Tasks.ValueTask");
                 if (isAsync)
                     AddAsyncMethod(sourceGenerator, method, returnType, parameters, path, httpMethod, paramList);
                 else
